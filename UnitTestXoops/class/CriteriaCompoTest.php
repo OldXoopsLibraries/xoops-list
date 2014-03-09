@@ -14,7 +14,7 @@ class CriteriaCompoTest extends MY_UnitTestCase
 	{
 		$x = new $this->myclass();
         $this->assertInstanceOf($this->myclass, $x);
-        $this->assertInstanceOf('Xoops\Core\Kernel\CriteriaCompo', $x);
+        $this->assertInstanceOf('\Xoops\Core\Kernel\CriteriaCompo', $x);
     }
         
 }
