@@ -1,4 +1,7 @@
 <?php
+
+if (defined('XOOPS_TU_ROOT_PATH')) return;
+
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
     die("XOOP check: PHP version require 5.3.0 or more");
 }
@@ -7,8 +10,6 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 if (empty($_SERVER["HTTP_HOST"])) {
 	define('IS_PHPUNIT',true);
 }
-
-require_once dirname(__FILE__) . '/../../htdocs/xoops_lib/vendor/autoload.php';
 
 if (defined('IS_PHPUNIT')) {
 	require_once dirname(__FILE__) . '/common_phpunit.php';
@@ -19,4 +20,10 @@ if (defined('IS_PHPUNIT')) {
 	define('XOOPS_XMLRPC',0);
 }
 
-require_once dirname(__FILE__) . '/../../htdocs/mainfile.php';
+define('XOOPS_TU_ROOT_PATH',realpath(dirname(__FILE__).'/../../htdocs'));
+require_once(XOOPS_TU_ROOT_PATH . '/class/XoopsBaseConfig.php');
+
+\XoopsBaseConfig::bootstrapTransition();
+
+require_once(XOOPS_TU_ROOT_PATH . '/xoops_lib/Xoops/Locale.php');
+\Xoops_Locale::loadLocale();
