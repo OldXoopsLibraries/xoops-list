@@ -6,15 +6,14 @@ require_once(dirname(__FILE__).'/../init_new.php');
 * @backupGlobals disabled
 * @backupStaticAttributes disabled
 */
-class XoopsPreloadTest extends \PHPUnit_Framework_TestCase
+class SnoopyTest extends \PHPUnit_Framework_TestCase
 {
-    protected $myclass = 'XoopsPreload';
+    protected $myClass = 'Snoopy';
     
     public function test___construct()
 	{
-		$class = $this->myclass;
-		$x = $class::getInstance();
-        $this->assertInstanceOf('\Xoops\Core\Events', $x);
+		$x = new $this->myClass();
+        $this->assertInstanceOf($this->myClass, $x);
     }
         
 }
